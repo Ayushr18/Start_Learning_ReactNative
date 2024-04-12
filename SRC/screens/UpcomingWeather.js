@@ -1,49 +1,10 @@
 import React from "react";
-import { SafeAreaView, StyleSheet, Text, FlatList, View, StatusBar, ImageBackground } from "react-native";
+import { SafeAreaView, StyleSheet, FlatList, View, StatusBar, ImageBackground } from "react-native";
 import {Feather} from '@expo/vector-icons';
 import ListItem from "../components/ListItem";
 
-const DATA = [
-    {
-        dt_txt: "2023-02-18 12:00:00",
-        main:{
-            temp_max: 8.85,
-            temp_min: 7.55
-        },
-        weather: [
-            {
-                main: 'Clear'
-            }
-        ]
-    },
-    {
-        dt_txt: "2023-01-19 18:00:00",
-        main:{
-            temp_max: 4.85,
-            temp_min: 2.55
-        },
-        weather: [
-            {
-                main: 'Clear'
-            }
-        ]
-    },
-    {
-        dt_txt: "2024-04-26 15:00:00",
-        main:{
-            temp_max: 88.85,
-            temp_min: 70.55
-        },
-        weather: [
-            {
-                main: 'Foogy'
-            }
-        ]
-    }
-];
 
-
-const UpcomingWeather = () => {
+const UpcomingWeather = ({weatherData}) => {
     const renderItem = ({item}) => (
         <ListItem
             condition={item.weather[0].main}
@@ -56,8 +17,7 @@ const UpcomingWeather = () => {
   return (
     <SafeAreaView style={container}>
       <ImageBackground source={require('../../assets/thunderstorm-.jpg')} style={image}>
-        <Text>Upcoming Weather</Text>
-        <FlatList  data={DATA} renderItem={renderItem} keyExtractor={(item) => item.dt_txt}/>
+        <FlatList  data={weatherData} renderItem={renderItem} keyExtractor={(item) => item.dt_txt}/>
       </ImageBackground>
     </SafeAreaView>
   );
